@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Abi Raja <abimanyuraja@gmail.com>"]
 license = "MIT"
+package-mode = false  # 添加这一行
 
 [tool.poetry.dependencies]
 python = "^3.10"

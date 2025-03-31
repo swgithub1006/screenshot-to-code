@@ -1,8 +1,8 @@
 # Load environment variables first
 from dotenv import load_dotenv
 
-load_dotenv()
-
+# 指定编码为 UTF-8
+load_dotenv(encoding='utf-8')
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
