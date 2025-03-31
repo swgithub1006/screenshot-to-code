@@ -14,7 +14,6 @@ from google.genai import types
 
 from utils import pprint_prompt
 
-
 # Actual model versions that are passed to the LLMs and stored in our logs
 class Llm(Enum):
     GPT_4_VISION = "gpt-4-vision-preview"
