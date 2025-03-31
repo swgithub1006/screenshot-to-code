@@ -6,20 +6,19 @@ import {
   SelectTrigger,
 } from "../ui/select";
 import { Badge } from "../ui/badge";
-import { Stack, STACK_DESCRIPTIONS } from "../../lib/stacks";
-import StackLabel from "../core/StackLabel";
+import { CodeGenerationModel, CODE_GENERATION_MODEL_DESCRIPTIONS } from "../../lib/models";
 
 interface Props {
-  stack: Stack | undefined;
-  setStack: (config: Stack) => void;
+  model: CodeGenerationModel | undefined;
+  setModel: (config: CodeGenerationModel) => void;
   label?: string;
   shouldDisableUpdates?: boolean;
 }
 
-function OutputSettingsSection({
-  stack,
-  setStack,
-  label = "选择技术栈:",
+function ModelsSettingSection({
+  model,
+  setModel,
+  label = "选择llm模型:",
   shouldDisableUpdates = false,
 }: Props) {
   return (
@@ -27,20 +26,20 @@ function OutputSettingsSection({
       <div className="grid grid-cols-3 items-center gap-4">
         <span>{label}</span>
         <Select
-          value={stack}
-          onValueChange={(value: string) => setStack(value as Stack)}
+          value={model}
+          onValueChange={(value: string) => setModel(value as CodeGenerationModel)}
           disabled={shouldDisableUpdates}
         >
-          <SelectTrigger className="col-span-2" id="output-settings-js">
-            {stack ? <StackLabel stack={stack} /> : "Select a stack"}
+          <SelectTrigger className="col-span-2" id="model-settings-js">
+            {model ? CODE_GENERATION_MODEL_DESCRIPTIONS[model].name : "Select a model"}
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              {Object.values(Stack).map((stack) => (
-                <SelectItem key={stack} value={stack}>
+              {Object.values(CodeGenerationModel).map((model) => (
+                <SelectItem key={model} value={model}>
                   <div className="flex items-center">
-                    <StackLabel stack={stack} />
-                    {STACK_DESCRIPTIONS[stack].inBeta && (
+                    <span>{CODE_GENERATION_MODEL_DESCRIPTIONS[model].name}</span>
+                    {CODE_GENERATION_MODEL_DESCRIPTIONS[model].inBeta && (
                       <Badge className="ml-2" variant="secondary">
                         Beta
                       </Badge>
@@ -56,4 +55,4 @@ function OutputSettingsSection({
   );
 }
 
-export default OutputSettingsSection;
+export default ModelsSettingSection;

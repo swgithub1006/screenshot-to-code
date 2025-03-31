@@ -1,5 +1,3 @@
-// Keep in sync with backend (llm.py)
-// Order here matches dropdown order
 export enum CodeGenerationModel {
   CLAUDE_3_5_SONNET_2024_06_20 = "claude-3-5-sonnet-20240620",
   GPT_4O_2024_05_13 = "gpt-4o-2024-05-13",
@@ -8,7 +6,6 @@ export enum CodeGenerationModel {
   CLAUDE_3_SONNET = "claude_3_sonnet",
 }
 
-// Will generate a static error if a model in the enum above is not in the descriptions
 export const CODE_GENERATION_MODEL_DESCRIPTIONS: {
   [key in CodeGenerationModel]: { name: string; inBeta: boolean };
 } = {
